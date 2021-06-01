@@ -10,6 +10,7 @@ from IPython.display import display  # for ease of testing
 
 from sklearn.linear_model import LinearRegression  # for linear regresion
 
+#second commit test
 
 def analyze(ticker):
     # GPRE
