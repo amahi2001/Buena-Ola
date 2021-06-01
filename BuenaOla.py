@@ -197,19 +197,48 @@ def analyze(ticker):
             plt.show()
 
         elif(inp == '4'):
+
+            # Total Emissions
             regDF = pd.DataFrame()
-            regDF['X'] = result['Total Emissions (Thousand MT CO2)']
-            regDF['Y'] = result['Earnings']
+            regDF['A'] = result['Total Emissions (Thousand MT CO2)']
+            regDF['B'] = result['Earnings']
 
-            X = regDF.iloc[:, 0].values.reshape(-1, 1)
-            Y = regDF.iloc[:, 1].values.reshape(-1, 1)
+            X1 = regDF.iloc[:, 0].values.reshape(-1, 1)
+            Y1 = regDF.iloc[:, 1].values.reshape(-1, 1)
             linear_regressor = LinearRegression()  # create object for the class
-            linear_regressor.fit(X, Y)  # perform linear regression
-            earnPredict = linear_regressor.predict(X)  # make predictions
+            linear_regressor.fit(X1, Y1)  # perform linear regression
+            earnPredict = linear_regressor.predict(X1)  # make predictions
 
-            plt.scatter(X, Y)
-            plt.plot(X, earnPredict, color='red')
+            plt.scatter(X1, Y1)
+            plt.plot(X1, earnPredict, color='blue')
 
+            # Nitrogen Oxide Prevented
+            regDF1 = pd.DataFrame()  # creating an empty dataframe
+            regDF1['C'] = result['Nitrogen Oxide (MT Prevented)']
+            regDF1['D'] = result['Earnings']
+
+            X2 = regDF1.iloc[:, 0].values.reshape(-1, 1)
+            Y2 = regDF1.iloc[:, 1].values.reshape(-1, 1)
+            linear_regressor = LinearRegression()  # create object for the class
+            linear_regressor.fit(X2, Y2)  # perform linear regression
+            earnPredict = linear_regressor.predict(X2)  # make predictions
+
+            plt.scatter(X2, Y2)
+            plt.plot(X2, earnPredict, color='orange')
+
+            # Ozone prevented
+            regDF = pd.DataFrame()  # creating an empty dataframe
+            regDF['E'] = result['Ozone (MT Prevented)']
+            regDF['F'] = result['Earnings']
+
+            X3 = regDF.iloc[:, 0].values.reshape(-1, 1)
+            Y3 = regDF.iloc[:, 1].values.reshape(-1, 1)
+            linear_regressor = LinearRegression()  # create object for the class
+            linear_regressor.fit(X3, Y3)  # perform linear regression
+            earnPredict = linear_regressor.predict(X3)  # make predictions
+
+            plt.scatter(X3, Y3)
+            plt.plot(X3, earnPredict, color='green')
             plt.show()
         # error-handling for invalid input
         else:
