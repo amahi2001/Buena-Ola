@@ -126,7 +126,7 @@ def analyze(ticker):
             linear_regressor.fit(X3, Y3)  # perform linear regression
             earnPredict = linear_regressor.predict(X3)  # make predictions
 
-
+            #plotting the data
             plt.title("All environmental factors to Earnings")
             plt.xlabel("Environmental factors (TMT/ TMWh/ Tm^3")
             plt.ylabel("Earnings in $USD")
@@ -168,6 +168,10 @@ def analyze(ticker):
             linear_regressor.fit(X, Y)  # perform linear regression
             earnPredict = linear_regressor.predict(X)  # make predictions
 
+            #plotting the data
+            plt.title("Total Emissions to Earnings")
+            plt.xlabel("Total Emissions (TMT CO2)")
+            plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
 
@@ -187,6 +191,10 @@ def analyze(ticker):
             linear_regressor.fit(X, Y)  # perform linear regression
             earnPredict = linear_regressor.predict(X)  # make predictions
 
+            #plotting the data
+            plt.title("Nitrogen Oxide prevented to Earnings")
+            plt.xlabel("Nitrogen Oxide prevented (MT)")
+            plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
 
@@ -205,7 +213,11 @@ def analyze(ticker):
             linear_regressor = LinearRegression()  # create object for the class
             linear_regressor.fit(X, Y)  # perform linear regression
             earnPredict = linear_regressor.predict(X)  # make predictions
-
+            
+            #plotting the data
+            plt.title("Ozone prevented to Earnings")
+            plt.xlabel("Ozone Prevented (MT)")
+            plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
             plt.show()
@@ -223,7 +235,7 @@ def analyze(ticker):
             linear_regressor.fit(X1, Y1)  # perform linear regression
             earnPredict = linear_regressor.predict(X1)  # make predictions
 
-            plt.scatter(X1, Y1)
+            plt.scatter(X1, Y1, label = "Total Emissions (TMT CO2)")
             plt.plot(X1, earnPredict, color='blue')
 
             # Nitrogen Oxide Prevented
@@ -237,7 +249,7 @@ def analyze(ticker):
             linear_regressor.fit(X2, Y2)  # perform linear regression
             earnPredict = linear_regressor.predict(X2)  # make predictions
 
-            plt.scatter(X2, Y2)
+            plt.scatter(X2, Y2, label = "Nitrogen Oxide prevented (MT)")
             plt.plot(X2, earnPredict, color='orange')
 
             # Ozone prevented
@@ -251,8 +263,9 @@ def analyze(ticker):
             linear_regressor.fit(X3, Y3)  # perform linear regression
             earnPredict = linear_regressor.predict(X3)  # make predictions
 
-            plt.scatter(X3, Y3)
+            plt.scatter(X3, Y3, label = "Ozone (MT Prevented)")
             plt.plot(X3, earnPredict, color='green')
+            plt.legend()
             plt.show()
         # error-handling for invalid input
         else:
