@@ -25,7 +25,7 @@ def analyze(ticker):
 
         # display(result) q
         inp = input(
-            '\nWhich data comparison would you like to use ?: \n(1) Total GHG emissions(Thousand Metric Tons)\n(2) Electricity Use (Thousand Megawatt Hours)\n(3)Total Water Use (thousand cubic meters)\n(4) Compare all\n')
+            '\nWhich data comparison would you like to use ?: \n(1) Total GHG emissions(Thousand Metric Tons)\n(2) Electricity Use (Thousand Megawatt Hours)\n(3) Total Water Use (thousand cubic meters)\n(4) Compare all\n')
 
         # come back to this to implement labels and legends
         if(inp == '1'):
@@ -61,7 +61,7 @@ def analyze(ticker):
             earnPredict = linear_regressor.predict(X)  # make predictions
 
             plt.title("Total Electricity use to Earnings")
-            plt.xlabel("Total Electricity Use (TMWh")
+            plt.xlabel("Total Electricity Use (TMWh)")
             plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
@@ -128,7 +128,7 @@ def analyze(ticker):
 
             #plotting the data
             plt.title("All environmental factors to Earnings")
-            plt.xlabel("Environmental factors (TMT/ TMWh/ Tm^3")
+            plt.xlabel("Environmental factors (TMT/ TMWh/ Tm^3)")
             plt.ylabel("Earnings in $USD")
             plt.scatter(X3, Y3, label='Total water use (TM^3)')
             plt.plot(X3, earnPredict, color='green')
