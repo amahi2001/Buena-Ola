@@ -23,7 +23,7 @@ def analyze(ticker):
 
         result = pd.merge(gpre, earnings, how='inner', on='Year')
 
-        # display(result)
+        # display(result) q
         inp = input(
             '\nWhich data comparison would you like to use ?: \n(1) Total GHG emissions(Thousand Metric Tons)\n(2) Electricity Use (Thousand Megawatt Hours)\n(3)Total Water Use (thousand cubic meters)\n(4) Compare all\n')
 
@@ -42,11 +42,14 @@ def analyze(ticker):
             linear_regressor.fit(X, Y)  # perform linear regression
             earnPredict = linear_regressor.predict(X)  # make predictions
 
+            plt.title("Total Emissions to Earnings")
+            plt.xlabel("Total GHG emissions (TMT)")
+            plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
             plt.show()
 
-        elif(inp == '2'):
+        elif(inp == '2'): #comparing electricty use to earnings
             regDF = pd.DataFrame()  # creating an empty dataframe
             regDF['X'] = result['Electricity Use (Thousand Megawatt Hours)']
             regDF['Y'] = result['Earnings']
@@ -57,11 +60,14 @@ def analyze(ticker):
             linear_regressor.fit(X, Y)  # perform linear regression
             earnPredict = linear_regressor.predict(X)  # make predictions
 
+            plt.title("Total Electricity use to Earnings")
+            plt.xlabel("Total Electricity Use (TMWh")
+            plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
             plt.show()
 
-        elif(inp == '3'):
+        elif(inp == '3'): #comparing water use to earnings
             regDF = pd.DataFrame()  # creating an empty dataframe
             regDF['X'] = result['Total Water Use (thousand cubic meters)']
             regDF['Y'] = result['Earnings']
@@ -72,11 +78,14 @@ def analyze(ticker):
             linear_regressor.fit(X, Y)  # perform linear regression
             earnPredict = linear_regressor.predict(X)  # make predictions
 
+            plt.title("Total Electricity use to Earnings")
+            plt.xlabel("Total Water Use (TM^3)")
+            plt.ylabel("Earnings in $USD")
             plt.scatter(X, Y)
             plt.plot(X, earnPredict, color='red')
             plt.show()
 
-        elif(inp == '4'):
+        elif(inp == '4'): #if the user chooses to compare all factors
 
             # GHG Emissions
             regDF = pd.DataFrame()
@@ -89,7 +98,7 @@ def analyze(ticker):
             linear_regressor.fit(X1, Y1)  # perform linear regression
             earnPredict = linear_regressor.predict(X1)  # make predictions
 
-            plt.scatter(X1, Y1)
+            plt.scatter(X1, Y1, label = 'Total GHG Emissions (TMT)')
             plt.plot(X1, earnPredict, color='blue')
 
             # Electricity used
@@ -103,7 +112,7 @@ def analyze(ticker):
             linear_regressor.fit(X2, Y2)  # perform linear regression
             earnPredict = linear_regressor.predict(X2)  # make predictions
 
-            plt.scatter(X2, Y2)
+            plt.scatter(X2, Y2, label = "Electricity use (TMT)")
             plt.plot(X2, earnPredict, color='orange')
 
             # Total Water use
@@ -117,10 +126,15 @@ def analyze(ticker):
             linear_regressor.fit(X3, Y3)  # perform linear regression
             earnPredict = linear_regressor.predict(X3)  # make predictions
 
-            plt.scatter(X3, Y3)
-            plt.plot(X3, earnPredict, color='green')
 
+            plt.title("All environmental factors to Earnings")
+            plt.xlabel("Environmental factors (TMT/ TMWh/ Tm^3")
+            plt.ylabel("Earnings in $USD")
+            plt.scatter(X3, Y3, label='Total water use (TM^3)')
+            plt.plot(X3, earnPredict, color='green')
+            plt.legend()
             plt.show()
+
 
         else:
             print("\n**error, invalid input, pleae enter valid input**\n")
