@@ -285,6 +285,7 @@ def restart():
         print('Have a good day!\n')
     else:
         print("please input a valid answer (1 or 2)\n")
+        #recursion on invalid input
         restart()
 
 
